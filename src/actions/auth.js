@@ -1,4 +1,6 @@
 import api from '../api'
+import {post} from '../api/request'
+import Api from "../api/apiUrl";
 
 export const FETCH_PROFILE_PENDING = 'FETCH_PROFILE_PENDING';
 export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
@@ -24,16 +26,15 @@ export function fetchProfile() {
     }
 }
 
-export function login(user, password) {
+export async function login(username, password) {
+    const res = await post(Api.login , {username , password})
+    console.log(res)
+
+
   return {
       type: 'LOGIN',
       payload: {
-        promise: api.put('/login', {
-          data: {
-            user: user,
-            password: password
-          }
-        })
+          a:'b'
       }
   }
 }

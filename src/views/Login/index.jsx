@@ -27,17 +27,17 @@ class Login extends React.Component {
     this.setState({
       loading: true
     });
-    this.props.login(data.username, data.password).payload.promise.then(res => {
+    this.props.login(data.username, data.password).then(res => {
       this.setState({
         loading: false
       });
       if (res.error) {
         message.error(res.payload.response.data.message);
       }
-      if (!res.error && res.payload.data)  {
-        message.success('Welcome ' + res.payload.data.name);
-        this.props.history.replace('/');
-      }
+      // if (!res.error && res.payload.data)  {
+      //   message.success('Welcome ' + res.payload.data.name);
+      //   this.props.history.replace('/');
+      // }
     }).catch(err => {
       this.setState({
         loading: false
